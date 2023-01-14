@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  has_many :pokemons, :bookings
+  has_many :pokemons
+  has_many :bookings
 end
