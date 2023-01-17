@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+
+ before_action :set_pokemon, only: %i[new create]
+
   def index
     @bookings = Booking.all
   end
@@ -13,6 +16,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.pokemon = @pokemon
     @booking.save
     redirect_to booking_path(@booking)
   end
@@ -34,6 +38,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def set_pokemon
+    @pokemon = Pokemon.find(params[:pokemon_id])
+  end
 
   def booking_params
     params.require(:booking).permit(:date)

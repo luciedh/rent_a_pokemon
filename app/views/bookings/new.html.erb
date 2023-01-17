@@ -1,6 +1,6 @@
 <div class="m-5">
   <h1>Book your Pokémon</h1>
-  <%= simple_form_for(@booking) do |f| %>
+  <%= simple_form_for(@pokemon, @booking) do |f| %>
     <%= f.input :date %>
     <%= f.submit %>
   <% end %>
