@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_160602) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_200213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_160602) do
     t.boolean "user_validation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "pokemon_id", null: false
+    t.index ["pokemon_id"], name: "index_bookings_on_pokemon_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
@@ -26,6 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_160602) do
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "sprite_url"
+    t.string "image_url"
+    t.index ["user_id"], name: "index_pokemons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_160602) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "pokemons"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "pokemons", "users"
 end
