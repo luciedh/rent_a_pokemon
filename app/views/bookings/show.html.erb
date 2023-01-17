@@ -1,0 +1,5 @@
+<p>Congratulations, your booking is completed for <%= @booking.date %> !</p>
+<%= link_to "Delete",
+  booking_path(@booking),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
