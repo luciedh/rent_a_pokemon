@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "open-uri"
+require "json"
+
+GEN1 = "https://pokebuildapi.fr/api/v1/pokemon/generation/1"
+
+pokemons_list = URI.open(GEN1).read
+pokemons_serialized = JSON.parse(pokemon_list)
+
+pokemons_serialized.each do | pokemon |
+  Pokemon.create(
+    name: pokemon['name'],
+    image_url: pokemon['image'],
+    sprite_url: pokemon['sprite']
+  )
+end
