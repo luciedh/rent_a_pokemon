@@ -1,4 +1,5 @@
-<p>Congratulations, your booking is completed for <%= @booking.date %> !</p>
+<p><%= @booking.date %> !</p>
+<img src="<%= @booking.pokemon.image_url %>" alt="Booked Pokemon image">
 <%= link_to "Delete",
   booking_path(@booking),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
