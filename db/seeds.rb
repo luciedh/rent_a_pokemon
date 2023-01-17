@@ -12,9 +12,10 @@ require "json"
 GEN1 = "https://pokebuildapi.fr/api/v1/pokemon/generation/1"
 
 pokemons_list = URI.open(GEN1).read
-pokemons_serialized = JSON.parse(pokemon_list)
+pokemons_serialized = JSON.parse(pokemons_list)
 
 pokemons_serialized.each do | pokemon |
+
   Pokemon.create(
     name: pokemon['name'],
     image_url: pokemon['image'],
