@@ -7,7 +7,7 @@
     <div class="col-sm-6">
       <%= simple_form_for([@pokemon, @booking]) do |f| %>
         <%= f.input :date, as: :date, html5: true %>
-        <%= f.submit, class:"btn btn-primary" %>
+        <%= f.button :submit, class:"btn btn-primary" %>
       <% end %>
     </div>
   </div>
