@@ -1,6 +1,12 @@
-<p><%= @booking.date %> !</p>
-<img src="<%= @booking.pokemon.image_url %>" alt="Booked Pokemon image">
-<%= link_to "Delete",
-  booking_path(@booking),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+<div class="container m-5">
+  <div class="row">
+    <p>Your booking for <%= @booking.pokemon.name %> on <%= @booking.date %> !</p>
+    <div class="col-sm-6">
+      <img src="<%= @booking.pokemon.image_url %>" alt="Booked Pokemon image">
+    </div>
+    <div class="col-sm-6">
+      <%= link_to "Delete", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary"%>
+      <%= link_to "Edit", edit_booking_path(@booking), class:"btn btn-primary"%>
+    </div>
+  </div>
+</div>
