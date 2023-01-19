@@ -1,2 +1,83 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.lemde.fr/2022/12/23/0/0/1920/1080/1920/0/75/0/884ebe7_1671792562779-legendes-pokemon-arceus-un-monde-ouvert-pas-si-legendaire-3711b09d-1920-1080-center.jpg);"> %>
+<div class="banner" >
+  <div class="container">
+    <h1>Find your Pokemon !</h1>
+    <p>Search or browse.</p>
+    <%= form_with url: pokemons_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a pokemon"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%# with ruby %>
+<div class="cards">
+  <div class="container mx-auto mt-4">
+    <div class="row">
+      <% @pokemons.sample(3).each do |pokemon| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem; ">
+            <%= image_tag pokemon.image_url %>
+            <div class="card-body">
+              <h5 class="card-title"><%= pokemon.name%></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn mr-2"><i class="fas fa-link"></i> Details</a>
+              <a href="#" class="btn "><i class="icon-pokeball-32"></i> Book</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<%# hard coded %>
+<%# <div class="cards">
+  <div class="container mx-auto mt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn mr-2"><i class="fas fa-link"></i> Details</a>
+            <a href="#" class="btn "><i class="fab fa-Book"></i> Book</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn  mr-2"><i class="fas fa-link"></i> Details</a>
+            <a href="#" class="btn"><i class="fab fa-Book"></i> Book</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn  mr-2"><i class="fas fa-link"></i> Details</a>
+            <a href="#" class="btn"><i class="fab fa-Book"></i> Book</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> %>
