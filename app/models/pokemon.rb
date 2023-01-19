@@ -5,4 +5,12 @@ class Pokemon < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def next
+    Pokemon.where("id > ?", id).first
+  end
+
+  def prev
+    Pokemon.where("id < ?", id).last
+  end
 end
