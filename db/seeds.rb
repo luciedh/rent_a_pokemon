@@ -22,3 +22,11 @@ pokemons_serialized.each do | pokemon |
     sprite_url: pokemon['sprite']
   )
 end
+
+User.create(
+  first_name: 'admin',
+  last_name: 'admin',
+  username: 'admin',
+  email: 'admin@admin.com',
+  password: 'adminadmin'
+)
