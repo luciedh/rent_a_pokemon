@@ -9,8 +9,12 @@
               <h5 class="card-title"><%= pokemon.name%></h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn mr-2"><i class="fas fa-link"></i> Details</a>
-              <a href="#" class="btn "><i class="fab fa-github"></i> Book</a>
+              <%= link_to pokemon do %>
+                <div class="btn mr-2"><i class="fas fa-link"></i> Details</div>
+              <% end %>
+              <%= link_to [:new, pokemon, :booking] do %>
+                <div class="btn"><i class="icon-pokeball-32"></i> Book</div>
+              <% end %>
             </div>
           </div>
         </div>
