@@ -12,10 +12,11 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://i.pinimg.com/favicons/b5ddd50fc3225d0cb651a4e32d3a01f61baa4cefb43cc3c176126b0e.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Team", team_path(current_user.id), class: "dropdown-item" %>
-              <%= link_to "My Bookings", "#", class: "dropdown-item" %>
+              <%= link_to "Pokémons", "/pokemons", class: "dropdown-item" %>
+              <%= link_to "My Bookings", "/bookings", class: "dropdown-item" %>
+              <%= link_to "My Profile", user_path(current_user.id), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>

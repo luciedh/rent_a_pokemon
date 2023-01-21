@@ -1,1 +1,40 @@
-<h1>Dashboard</h1>
+<div class="container mx-auto mt-4">
+  <h2>My account</h2>
+  <%= link_to "Edit my profile", "#", class: "btn btn-flat" %>
+  <p>ID : <%= @user.id %></p>
+  <p>First name: <%= @user.first_name %></p>
+  <p>Last name: <%=  @user.last_name %></p>
+  <p>Username: <%= @user.username %></p>
+  <p>Email: <%= @user.email %></p>
+</div>
+
+<div class="container mx-auto mt-4">
+  <h2>My team</h2>
+  <%= link_to "Edit my profile", "#", class: "btn btn-flat" %>
+  <% @my_team.each do |pokemon| %>
+    <div class="col-md-4">
+      <div class="card m-2" style="width: 12rem; ">
+        <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
+        <div class="card-body">
+          <h5 class="card-title"><%= pokemon.id %> - <%= pokemon.name%></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container mx-auto mt-4">
+  <h2>My Bookings</h2>
+  <%= link_to "Edit my bookings", "/bookings", class: "btn btn-flat" %>
+  <% @my_bookings.each do |booking| %>
+    <div class="col-md-4">
+      <div class="card m-2" style="width: 12rem; ">
+        <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
+        <div class="card-body">
+          <h5 class="card-title"><%= booking.pokemon.id %> - <%= booking.pokemon.name%></h5>
+          <h5 class="card-title">Booked on: <%= booking.date %></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
