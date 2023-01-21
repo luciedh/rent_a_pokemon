@@ -1,23 +1,32 @@
-<div class="cards">
+<div class="container d-flex">
+
   <div class="container mx-auto mt-4">
+    <h1 class="text-light fs-5">Hello <span class="user-nickname"><%= current_user.first_name %></span>, do you want to book <%= @pokemon.name %>?</h1>
     <div class="row">
       <div class="col-md-4">
-        <div class="card" style="width: 25rem;">
-          <%= image_tag @pokemon.image_url %>
-          <div class="card-body">
-            <h5 class="card-title"><%= @pokemon.name%></h5>
-            <h6 class="card-subtitle mb-2 text-muted">N°<%= @pokemon.id %></h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
+        <%= image_tag @pokemon.image_url %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @pokemon.name%></h5>
+          <h6 class="card-subtitle mb-2 text-muted">N°<%= @pokemon.id %></h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-      <% if @pokemon.prev %>
-      <%= link_to "Previous", pokemon_path(@pokemon.prev) %>
-      <% end %>
-      <% if @pokemon.next %>
-      <%= link_to "Next", pokemon_path(@pokemon.next) %>
-      <% end %>
-      <%= link_to "Back to all pokemons", pokemons_path %>
+        <div class="buttons d-flex">
+          <% if @pokemon.prev %>
+          <%= link_to "Previous", pokemon_path(@pokemon.prev), class: "btn btn-primary m-3" %>
+          <% end %>
+          <% if @pokemon.next %>
+          <%= link_to "Next", pokemon_path(@pokemon.next), class: "btn btn-primary m-3" %>
+          <% end %>
+          <%= link_to "All", pokemons_path, class: "btn btn-warning m-3" %>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="col-sm-4 m-5 p-5">
+    <%= simple_form_for([@pokemon, @booking]) do |f| %>
+      <%= f.input :date, as: :date, html5: true, class:"form-control" %>
+      <%= f.submit class:"btn btn-primary mt-5" %>
+    <% end %>
   </div>
 </div>
