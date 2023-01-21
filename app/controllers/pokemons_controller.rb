@@ -4,13 +4,14 @@ class PokemonsController < ApplicationController
       @pokemons = Pokemon.where("name ILIKE ?", "%#{params[:query]}%")
       @pokemons = Pokemon.where.not(user: nil) if @pokemons.empty?
     else
-      # @pokemons = Pokemon.where.not(user: nil)
-      @pokemons = Pokemon.all
+      @pokemons = Pokemon.where.not(user: nil)
+      # @pokemons = Pokemon.all
     end
   end
 
   def show
     @pokemon = Pokemon.find(params[:id])
+    @booking = Booking.new
   end
 
   def edit
