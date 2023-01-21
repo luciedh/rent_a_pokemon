@@ -1,0 +1,4 @@
+<%= simple_form_for @user, url: pokemon_path ,method: :patch do |f| %>
+  <%= f.association :pokemons, collection: Pokemon.all, as: :check_boxes %>
+  <%= f.button :submit %>
+<% end %>
