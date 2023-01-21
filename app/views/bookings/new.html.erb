@@ -4,11 +4,22 @@
     <div class="col-sm-4 card m-5">
       <img src="<%= @pokemon.image_url %>" alt="Booked Pokemon image">
     </div>
-    <div class="col-sm-4 card m-5 p-5">
-      <%= simple_form_for([@pokemon, @booking]) do |f| %>
-        <%= f.input :date, as: :date, html5: true, class:"form-control" %>
+    <%# <div class="col-sm-4 card m-5 p-5" data-controller="flatpickr"> %>
+      <%= simple_form_for [@pokemon, @booking],
+        html: {
+          data: {
+            controller: 'flatpickr',
+            flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object
+          }
+        } do |f| %>
+        <%= f.input :date,
+          as: :string,
+          input_html: {
+            data: {
+               flatpickr_target: 'dateInput'
+          }} %>
         <%= f.submit class:"btn btn-primary mt-5" %>
       <% end %>
-    </div>
+    <%# </div> %>
   </div>
 </div>
