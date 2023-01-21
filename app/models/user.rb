@@ -9,5 +9,6 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_many :pokemons
+  validates_length_of :pokemons, maximum: 6
   has_many :bookings
 end
