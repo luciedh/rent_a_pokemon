@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users, only: %i[show edit update]
-  resources :pokemons, only: %i[index show] do
+  resources :pokemons, only: %i[index show update] do
     resources :bookings, only: %i[new create]
   end
   resources :bookings, only: %i[index show edit update destroy]
+  get 'users/:id/team', to: 'pokemons#edit', as: "team"
 end
