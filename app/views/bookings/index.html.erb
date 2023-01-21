@@ -1,10 +1,22 @@
 <div class="m-5">
-  <div class="card-header">Your bookings</div>
-  <div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-      <% @bookings.each do |booking| %>
-        <li class="list-group-item"><%= booking.pokemon.name %> - <%= link_to booking.date, booking_path(booking) %></li>
-      <% end %>
-    </ul>
+  <div class="text-light fs-5">Your bookings</div>
+  <div class="cards">
+    <div class="container mx-auto mt-4">
+      <div class="row">
+        <% @bookings.each do |booking| %>
+          <div class="col-md-4">
+            <div class="card m-2" style="width: 18rem; ">
+              <img src="<%= booking.pokemon.image_url %>" alt="Booked Pokemon image">
+              <div class="card-body">
+                <h5 class="card-title"><%= booking.pokemon.name%></h5>
+                <p class="card-text"><%= booking.pokemon.detail%></p>
+                <%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary"%>
+                <%= link_to "Edit", edit_booking_path(booking), class:"btn btn-primary"%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

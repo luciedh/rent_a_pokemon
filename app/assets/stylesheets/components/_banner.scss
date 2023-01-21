@@ -1,0 +1,29 @@
+.banner {
+  background-size: cover;
+  // background-position: bottom;
+  padding: 130px 0;
+  // box-shadow: 0 0 10px 10px #161819 inset;
+  background-image: asset-url('banner_1.jpg');
+  background-color: #161819;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner_alt {
+  background-color: #161819;
+  padding: 130px 0;
+  max-height: 150px;
+}

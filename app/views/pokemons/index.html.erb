@@ -1,5 +1,24 @@
-<ul>
-  <% @pokemons.each do |pokemon| %>
-    <li><%= pokemon.name %></li>
-  <% end %>
-</ul>
+<div class="cards">
+  <div class="container mx-auto mt-4">
+    <div class="row">
+      <% @pokemons.each do |pokemon| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag pokemon.image_url %>
+            <div class="card-body">
+              <h5 class="card-title"><%= pokemon.name%></h5>
+              <h6 class="card-subtitle mb-2 text-muted">N°<%= pokemon.id %></h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <%= link_to pokemon do %>
+                <div class="btn mr-2"><i class="fas fa-link"></i> Details</div>
+              <% end %>
+              <%= link_to [:new, pokemon, :booking] do %>
+                <div class="btn"><i class="icon-pokeball-32"></i> Book</div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
