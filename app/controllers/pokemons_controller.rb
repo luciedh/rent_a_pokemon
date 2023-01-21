@@ -27,6 +27,6 @@ class PokemonsController < ApplicationController
       pokemon[:user_id] = params[:id]
       pokemon.save
     end
-    redirect_to user_path(:id)
+    redirect_to user_path(current_user.id)
   end
 end
