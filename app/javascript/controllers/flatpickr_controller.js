@@ -1,29 +1,30 @@
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
-import confirmDatePlugin from 'flatpickr/dist/plugins/confirmDate/confirmDate';
 
 // Connects to data-controller="flatpickr"
 
 export default class extends Controller {
-  static targets = [ 'dateInput' ]
+  // retrieve target from the DOM
+  static targets = [ 'startDateInput' ]
   static values = { dates: Object }
 
+
   connect() {
-    console.log('Hello', this.dateInputTarget, this.datesValue)
-    // console.log(this.datesValue)
+
+    flatpickr(this.startDateInputTarget, {
+      altInput: true,
+      dateFormat: "Y-m-d",
+      disable: this.datesValue.disable,
+      // minDate: "today"
+    })
+  }
+
     // flatpickr(this.dateInputTarget, {
     //   "plugins": [new confirmDatePlugin({})],
     //   minDate: "today",
 
     // }, this.#options)
-
-    this.#initFlatPickr()
-  }
-
-      #initFlatPickr() {
-      flatpickr(this.dateInputTarget, this.#options());
-      }
-
+/*
 
     #options() {
       return {
@@ -37,6 +38,6 @@ export default class extends Controller {
 
     #parsedBookedDates() {
       return this.datesValue
-      }
+      } */
 
 }
