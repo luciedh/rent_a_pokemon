@@ -1,43 +1,44 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+
 
 // Connects to data-controller="flatpickr"
-
 export default class extends Controller {
-  // retrieve target from the DOM
-  static targets = [ 'startDateInput' ]
+  // static targets = [ 'startInput', 'endInput' ]
+  static targets = [ 'startInput' ]
+
   static values = { dates: Object }
 
 
   connect() {
-
-    flatpickr(this.startDateInputTarget, {
-      altInput: true,
-      dateFormat: "Y-m-d",
-      disable: this.datesValue.disable,
-      // minDate: "today"
-    })
+    this.#initFlatPickr()
   }
 
-    // flatpickr(this.dateInputTarget, {
-    //   "plugins": [new confirmDatePlugin({})],
-    //   minDate: "today",
+  #initFlatPickr() {
+    flatpickr(this.startInputTarget, this.#options());
+    }
 
-    // }, this.#options)
-/*
-
-    #options() {
-      return {
-
+  #options() {
+    // return {
+    // ...this.#parsedBookedDates(),
+    // inline: true,
+    // enableTime: true,
+    // minDate: new Date(),
+    // mode: 'range',
+    //   "plugins": [new rangePlugin({ input: this.endInputTarget})]
+    // }
+    return {
+      ...this.#parsedBookedDates(),
+      inline: true,
       enableTime: true,
-      minDate: new Date(),
-      disable: ["2025-01-30"]
+      minDate: new Date()
+      // mode: 'range',
+      //   "plugins": [new rangePlugin({ input: this.endInputTarget})]
       }
-      }
+  }
 
-
-    #parsedBookedDates() {
-      return this.datesValue
-      } */
-
+  #parsedBookedDates() {
+  return this.datesValue
+  }
 }

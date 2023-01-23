@@ -1,20 +1,21 @@
 module PokemonConcern
   def booked_dates
-  # renvoie un array des dates de tous les bookings du pokemon
-    bookings.pluck(:date)
+    # renvoie un array d'array des dates de debut et de fin de tous les bookings du pokemon
+    bookings.pluck(:start_date, :start_date)
   end
 
   def simple_format_booked_dates
-  # renvoie un array des dates
-  # de tous les bookings du pokemon mais sous la forme stringifiée : "1991-12-28"
-    booked_dates.map(&:to_s)
+    # renvoie un array d'array des dates de debut et de fin
+    # de tous les bookings du pokemon mais sous la forme stringifiée : "1991-12-28"
+    booked_dates.deep_map(&:to_s)
   end
 
   def booked_dates_json_objects
-    simple_format_booked_dates.map do |booked_date|
-    {
-      date: booked_date
-    }
+    simple_format_booked_dates.map do |dates_arr|
+      {
+        from: dates_arr.first,
+        to: dates_arr.last
+      }
     end
   end
 
