@@ -11,6 +11,7 @@
       %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
+    <%= link_to "Find them all", pokemons_path, class: "btn btn-primary"%>
   </div>
 </div>
 
@@ -22,16 +23,19 @@
         <div class="col-md-4">
           <div class="card" style="width: 18rem; ">
             <%= image_tag pokemon.image_url %>
+            <div class="card-header d-flex justify-content-between">
+              <div class="header-left">
+                <h5 class="card-title"><%= pokemon.name%></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              </div>
+              <div class="header-right">
+                <%= link_to pokemon do %>
+                  <div class="btn"><i class="icons8-pokeball  "></i></div>
+                <% end %>
+              </div>
+            </div>
             <div class="card-body">
-              <h5 class="card-title"><%= pokemon.name%></h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <%= link_to pokemon do %>
-                <div class="btn mr-2"><i class="fas fa-link"></i> Details</div>
-              <% end %>
-              <%= link_to [:new, pokemon, :booking] do %>
-                <div class="btn"><i class="icon-pokeball-32"></i> Book</div>
-              <% end %>
             </div>
           </div>
         </div>
