@@ -1,7 +1,8 @@
 class PokemonsController < ApplicationController
   def index
     if params[:query].present?
-      @pokemons = Pokemon.where("name ILIKE ?", "%#{params[:query]}%")
+      sql_query = "name ILIKE :query OR type1 ILIKE :query OR type2 ILIKE :query"
+      @pokemons = Pokemon.where(sql_query, query: "%#{params[:query]}%")
       @pokemons = Pokemon.where.not(user: nil) if @pokemons.empty?
     else
       @pokemons = Pokemon.where.not(user: nil)
