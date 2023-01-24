@@ -1,7 +1,7 @@
 <div class="container d-flex">
 
   <div class="container mx-auto mt-4">
-    <h1 class="text-light fs-5">Hello <span class="user-nickname"><%= current_user.first_name %></span>, do you want to book <%= @pokemon.name %>?</h1>
+    <h4>Hello <span class="user-nickname"><%= current_user.first_name %></span>, do you want to book <%= @pokemon.name %>?</h4>
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @pokemon.image_url %>
