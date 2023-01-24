@@ -16,12 +16,24 @@ pokemons_serialized = JSON.parse(pokemons_list)
 
 pokemons_serialized.each do | pokemon |
 
-  Pokemon.create(
-    name: pokemon['name'],
-    image_url: pokemon['image'],
-    sprite_url: pokemon['sprite']
-  )
-end
+  pokemon_temp = Pokemon.new
+    pokemon_temp.name = pokemon['name'],
+    pokemon_temp.image_url = pokemon['image'],
+    pokemon_temp.sprite_url = pokemon['sprite'],
+    pokemon_temp.pokedex_id = pokemon['pokedexId'],
+    if pokemon['apiTypes'].length > 1
+      pokemon_temp.type1 = pokemon['apiTypes'][0]['name']
+      pokemon_temp.type2 = pokemon['apiTypes'][1]['name']
+    else
+      pokemon_temp.type1 = pokemon['apiTypes'][0]['name']
+    end
+    pokemon_temp.hp = pokemon['stats']['HP']
+    pokemon_temp.attack = pokemon['stats']['attack']
+    pokemon_temp.defense = pokemon['stats']['defense']
+    pokemon_temp.speed = pokemon['stats']['speed']
+
+    pokemon_temp.save!
+  end
 
 User.create(
   first_name: 'admin',
