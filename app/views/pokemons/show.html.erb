@@ -24,9 +24,10 @@
   </div>
 
   <div class="col-sm-4 m-5 p-5">
-    <%= simple_form_for([@pokemon, @booking]) do |f| %>
-      <%= f.input :date, as: :date, html5: true, class:"form-control" %>
-      <%= f.submit class:"btn btn-primary mt-5" %>
-    <% end %>
+      <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr", flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object } ) do |f| %>
+        <%= f.input :start_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'startInput' } } %>
+        <%# <%= f.input :end_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'endInput' } }  %>
+        <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+      <% end %>
   </div>
 </div>
