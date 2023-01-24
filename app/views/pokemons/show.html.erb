@@ -1,14 +1,18 @@
 <div class="container d-flex">
-
   <div class="container mx-auto mt-4">
-    <h4>Hello <span class="user-nickname"><%= current_user.first_name %></span>, do you want to book <%= @pokemon.name %>?</h4>
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @pokemon.image_url %>
         <div class="card-body">
           <h5 class="card-title"><%= @pokemon.name%></h5>
-          <h6 class="card-subtitle mb-2 text-muted">N°<%= @pokemon.id %></h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h6 class="card-subtitle mb-2 text-muted">#<%= @pokemon.id %></h6>
+          <ul>
+            <li class="card-text"><%= @pokemon.type1%></li>
+            <% if @pokemon.type2 %>
+              <li class="card-text"><%= @pokemon.type2%></li>
+            <% end  %>
+          </ul>
+          <p class="card-text">HP: <%= @pokemon.hp%><br>Attack: <%= @pokemon.attack%><br>Defense: <%= @pokemon.defense%><br>Speed: <%= @pokemon.speed%></p>
         </div>
         <div class="buttons d-flex">
           <% if @pokemon.prev %>
@@ -22,8 +26,8 @@
       </div>
     </div>
   </div>
-
   <div class="col-sm-4 m-5 p-5">
+    <h4>Hello <span class="user-nickname"><%= current_user.first_name %></span>, would you like to book <%= @pokemon.name %>?</h4>
       <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr", flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object } ) do |f| %>
         <%= f.input :start_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'startInput' } } %>
         <%# <%= f.input :end_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'endInput' } }  %>

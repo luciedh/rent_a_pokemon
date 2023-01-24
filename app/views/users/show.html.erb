@@ -21,7 +21,7 @@
       <div class="card m-2" style="width: 10rem; ">
         <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
         <div class="card-body">
-          <h5 class="card-title">ID: <%= pokemon.id %><br><%= pokemon.name%></h5>
+          <h5 class="card-title">#<%= pokemon.id %><br><%= pokemon.name%></h5>
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@
       <div class="card m-2" style="width: 10rem; ">
         <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
         <div class="card-body">
-          <h5 class="card-title">ID: <%= booking.pokemon.id %><br><%= booking.pokemon.name%></h5>
-          <%# <h5 class="card-title">Booked on: <%= booking.date %></h5> %>
+          <h5 class="card-title">#<%= booking.pokemon.id %><br><%= booking.pokemon.name%></h5>
+          <h5 class="card-title">Booked on: <%= booking.start_date %></h5>
         </div>
       </div>
     </div>

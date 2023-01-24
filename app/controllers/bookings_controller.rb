@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     @booking.pokemon = @pokemon
     @booking.user = current_user
     @booking.save
-    redirect_to booking_path(@booking)
+    redirect_to "/bookings"
   end
 
   def edit
@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    redirect_to "/bookings"
   end
 
   def destroy

@@ -21,7 +21,6 @@ class PokemonsController < ApplicationController
   end
 
   def update
-
     pokemons_selected = params[:user][:pokemon_ids]
     pokemons_selected.shift
     pokemons_selected.each do | pokemon_id |
