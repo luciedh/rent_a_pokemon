@@ -9,6 +9,12 @@
               <div class="header-left">
                 <h5 class="card-title"><%= pokemon.name%></h5>
                 <h6 class="card-subtitle mb-2 text-muted">#<%= pokemon.id%></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= pokemon.type1%>
+                    <% if pokemon.type2 %>
+                      - <%= pokemon.type2%>
+                    <% end  %>
+                  </ul>
+                </h6>
               </div>
               <div class="header-right">
                 <%= link_to pokemon do %>
