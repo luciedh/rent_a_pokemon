@@ -4,7 +4,8 @@
   padding: 130px 0;
   // box-shadow: 0 0 10px 10px #161819 inset;
   background-image: asset-url('banner_1.jpg');
-  background-color: #161819;
+  background-color: #16181970;
+  background-blend-mode: multiply;
 }
 
 .banner h1 {
