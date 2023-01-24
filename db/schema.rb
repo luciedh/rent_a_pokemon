@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_23_083811) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_24_182254) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_083811) do
     t.bigint "user_id"
     t.string "sprite_url"
     t.string "image_url"
+    t.integer "pokedex_id"
+    t.integer "hp"
+    t.integer "attack"
+    t.integer "defense"
+    t.integer "speed"
+    t.text "type1"
+    t.text "type2"
     t.index ["user_id"], name: "index_pokemons_on_user_id"
   end
 
