@@ -22,7 +22,6 @@ export default class extends Controller {
     return {
       ...this.#parsedBookedDates(),
       inline: true,
-      enableTime: true,
       minDate: new Date()
       // mode: 'range',
       //   "plugins": [new rangePlugin({ input: this.endInputTarget})]

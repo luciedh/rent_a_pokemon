@@ -9,7 +9,6 @@
               <img src="<%= booking.pokemon.image_url %>" alt="Booked Pokemon image">
               <div class="card-body">
                 <h5 class="card-title"><%= booking.pokemon.name%></h5>
-                <p class="card-text"><%= booking.pokemon.detail%></p>
                 <%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary"%>
                 <%= link_to "Edit", edit_booking_path(booking), class:"btn btn-primary"%>
               </div>
