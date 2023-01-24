@@ -1,40 +1,51 @@
 <div class="container mx-auto mt-4">
   <h2>My account</h2>
-  <%= link_to "Edit my profile", "#", class: "btn btn-flat" %>
-  <p>ID : <%= @user.id %></p>
-  <p>First name: <%= @user.first_name %></p>
-  <p>Last name: <%=  @user.last_name %></p>
-  <p>Username: <%= @user.username %></p>
-  <p>Email: <%= @user.email %></p>
+  <br>
+  <p><b>User ID: </b><%= @user.id %></p>
+  <p><b>First name: </b><%= @user.first_name %></p>
+  <p><b>Last name: </b><%=  @user.last_name %></p>
+  <p><b>Username: </b><%= @user.username %></p>
+  <p><b>Email: </b><%= @user.email %></p>
 </div>
+<br>
 
 <div class="container mx-auto mt-4">
-  <h2>My team</h2>
-  <%= link_to "Edit my team", team_path(current_user.id), class: "btn btn-flat" %>
+  <h2>My team
+    <%= link_to team_path(current_user.id) do %>
+      <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
+    <% end %>
+  </h2>
+  <br>
   <% @my_team.each do |pokemon| %>
-    <div class="col-md-4">
-      <div class="card m-2" style="width: 12rem; ">
+    <div class="list-inline-item">
+      <div class="card m-2" style="width: 10rem; ">
         <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
         <div class="card-body">
-          <h5 class="card-title"><%= pokemon.id %> - <%= pokemon.name%></h5>
+          <h5 class="card-title">ID: <%= pokemon.id %><br><%= pokemon.name%></h5>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+<br>
 
 <div class="container mx-auto mt-4">
-  <h2>My Bookings</h2>
-  <%= link_to "Edit my bookings", "/bookings", class: "btn btn-flat" %>
+  <h2>My Bookings
+    <%= link_to "/bookings" do %>
+      <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
+    <% end %>
+  </h2>
+  <br>
   <% @my_bookings.each do |booking| %>
-    <div class="col-md-4">
-      <div class="card m-2" style="width: 12rem; ">
+    <div class="list-inline-item">
+      <div class="card m-2" style="width: 10rem; ">
         <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
         <div class="card-body">
-          <h5 class="card-title"><%= booking.pokemon.id %> - <%= booking.pokemon.name%></h5>
-          <h5 class="card-title">Booked on: <%= booking.date %></h5>
+          <h5 class="card-title">ID: <%= booking.pokemon.id %><br><%= booking.pokemon.name%></h5>
+          <%# <h5 class="card-title">Booked on: <%= booking.date %></h5> %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+<br>
