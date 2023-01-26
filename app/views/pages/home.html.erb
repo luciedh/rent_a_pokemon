@@ -27,6 +27,82 @@
               <div class="header-left">
                 <h5 class="card-title"><%= pokemon.name%></h5>
                 <h6 class="card-subtitle mb-2 text-muted">#<%= pokemon.id%></h6>
+                <p class="d-inline">
+                  <% if pokemon.type1 == "Poison"  %>
+                    <span class="poison"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Feu" %>
+                    <span class="feu"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Vol" %>
+                    <span class="vol"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Eau" %>
+                    <span class="eau"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Insecte" %>
+                    <span class="insecte"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Normal" %>
+                    <span class="normal"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Électrik" %>
+                    <span class="electrik"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Sol" %>
+                    <span class="sol"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Fée" %>
+                    <span class="fee"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Combat" %>
+                    <span class="combat"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Psy" %>
+                    <span class="psy"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Acier" %>
+                    <span class="acier"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Plante" %>
+                    <span class="plante"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Roche" %>
+                    <span class="roche"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Dragon" %>
+                    <span class="dragon"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Glace" %>
+                    <span class="glace"><%= pokemon.type1.upcase %></span>
+                  <% elsif pokemon.type1 == "Spectre" %>
+                    <span class="spectre"><%= pokemon.type1.upcase %></span>
+                  <% end %>
+                </p>
+                <p class="d-inline">
+                  <% if pokemon.type2 == "Poison"  %>
+                    <span class="poison"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Feu" %>
+                    <span class="feu"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Vol" %>
+                    <span class="vol"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Eau" %>
+                    <span class="eau"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Insecte" %>
+                    <span class="insecte"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Normal" %>
+                    <span class="normal"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Électrik" %>
+                    <span class="electrik"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Sol" %>
+                    <span class="sol"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Fée" %>
+                    <span class="fee"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Combat" %>
+                    <span class="combat"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Psy" %>
+                    <span class="psy"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Acier" %>
+                    <span class="acier"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Plante" %>
+                    <span class="plante"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Roche" %>
+                    <span class="roche"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Dragon" %>
+                    <span class="dragon"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Glace" %>
+                    <span class="glace"><%= pokemon.type2.upcase %></span>
+                  <% elsif pokemon.type2 == "Spectre" %>
+                    <span class="spectre"><%= pokemon.type2.upcase %></span>
+                  <% else %>
+                    <span class="d-inline"><%= "" %></span>
+                  <% end %>
+                </p>
               </div>
               <div class="header-right">
                 <%= link_to pokemon do %>
@@ -43,46 +119,6 @@
 <br>
 <br>
 
-<%# hard coded %>
-<%# <div class="cards">
-  <div class="container mx-auto mt-4">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn mr-2"><i class="fas fa-link"></i> Details</a>
-            <a href="#" class="btn "><i class="fab fa-Book"></i> Book</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn  mr-2"><i class="fas fa-link"></i> Details</a>
-            <a href="#" class="btn"><i class="fab fa-Book"></i> Book</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn  mr-2"><i class="fas fa-link"></i> Details</a>
-            <a href="#" class="btn"><i class="fab fa-Book"></i> Book</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> %>
+
+<%# ["Poison", "Feu", "Vol", "Eau", "Insecte", "Normal", "Électrik", "Sol", "Fée", "Combat", "Psy", "Acier", "Plante", "Roche", "Dragon"] %>
+<%# ["Glace", "Spectre"] %>
