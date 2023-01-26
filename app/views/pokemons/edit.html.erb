@@ -1,4 +1,18 @@
-<%= simple_form_for @user, url: pokemon_path ,method: :patch do |f| %>
-  <%= f.association :pokemons, collection: Pokemon.all, as: :check_boxes %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <%= simple_form_for @user, url: pokemon_path ,method: :patch, html: { class: "tiles"} do |f| %>
+      <%= f.association :pokemons,
+        collection: Pokemon.all.sort_by { |hash| hash[:user_id] || 0}.reverse,
+        :label => false,
+        :inline_label => false,
+        :include_blank => false,
+        :label_method => lambda { |b| "#{b.name} #{image_tag(b.sprite_url)}".html_safe}, # image_tag(b.sprite_url) },
+        value_method: :id,
+        as: :check_boxes,
+        :item_wrapper_class => "col-md-2 tile"
+      %>
+      <%# <% raise %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
