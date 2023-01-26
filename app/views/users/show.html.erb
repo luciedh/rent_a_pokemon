@@ -1,51 +1,117 @@
-<div class="container mx-auto mt-4">
-  <h2>My account</h2>
-  <br>
-  <p><b>User ID: </b><%= @user.id %></p>
-  <p><b>First name: </b><%= @user.first_name %></p>
-  <p><b>Last name: </b><%=  @user.last_name %></p>
-  <p><b>Username: </b><%= @user.username %></p>
-  <p><b>Email: </b><%= @user.email %></p>
-</div>
-<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="user-card">
+        <p><b>Bonjour </b><%= @user.username %></p>
+        <p>Ton total de point d'attaque est: </p>
+        <p>Ton total de point de défense: </p>
+      </div>
 
-<div class="container mx-auto mt-4">
-  <h2>My team
-    <%= link_to team_path(current_user.id) do %>
-      <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
-    <% end %>
-  </h2>
-  <br>
-  <% @my_team.each do |pokemon| %>
-    <div class="list-inline-item">
-      <div class="card m-2" style="width: 10rem; ">
-        <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
-        <div class="card-body">
-          <h5 class="card-title">#<%= pokemon.id %><br><%= pokemon.name%></h5>
-        </div>
+      <h2>Mon équipe
+        <%= link_to team_path(current_user.id) do %>
+          <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
+        <% end %>
+      </h2>
+      <div class="team-card">
+        <% @my_team.each do |pokemon| %>
+          <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
+            <p class="d-inline">
+              <% if pokemon.type1 == "Poison"  %>
+                <span class="poison"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Feu" %>
+                <span class="feu"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Vol" %>
+                <span class="vol"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Eau" %>
+                <span class="eau"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Insecte" %>
+                <span class="insecte"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Normal" %>
+                <span class="normal"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Électrik" %>
+                <span class="electrik"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Sol" %>
+                <span class="sol"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Fée" %>
+                <span class="fee"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Combat" %>
+                <span class="combat"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Psy" %>
+                <span class="psy"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Acier" %>
+                <span class="acier"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Plante" %>
+                <span class="plante"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Roche" %>
+                <span class="roche"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Dragon" %>
+                <span class="dragon"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Glace" %>
+                <span class="glace"><%= pokemon.type1.upcase %></span>
+              <% elsif pokemon.type1 == "Spectre" %>
+                <span class="spectre"><%= pokemon.type1.upcase %></span>
+              <% end %>
+            </p>
+            <p class="d-inline">
+              <% if pokemon.type2 == "Poison"  %>
+                <span class="poison"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Feu" %>
+                <span class="feu"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Vol" %>
+                <span class="vol"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Eau" %>
+                <span class="eau"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Insecte" %>
+                <span class="insecte"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Normal" %>
+                <span class="normal"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Électrik" %>
+                <span class="electrik"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Sol" %>
+                <span class="sol"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Fée" %>
+                <span class="fee"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Combat" %>
+                <span class="combat"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Psy" %>
+                <span class="psy"><%= pokemon.type2.upcase %></span>
+              <% elsif pokemon.type2 == "Acier" %>
+                <span class="acier"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Plante" %>
+                <span class="plante"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Roche" %>
+                 <span class="roche"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Dragon" %>
+                 <span class="dragon"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Glace" %>
+                 <span class="glace"><%= pokemon.type2.upcase %></span>
+               <% elsif pokemon.type2 == "Spectre" %>
+                 <span class="spectre"><%= pokemon.type2.upcase %></span>
+               <% else %>
+                 <span class="d-inline"><%= "" %></span>
+               <% end %>
+             </p>
+        <% end %>
       </div>
     </div>
-  <% end %>
-</div>
-<br>
-
-<div class="container mx-auto mt-4">
-  <h2>My Bookings
-    <%= link_to "/bookings" do %>
-      <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
-    <% end %>
-  </h2>
-  <br>
-  <% @my_bookings.each do |booking| %>
-    <div class="list-inline-item">
-      <div class="card m-2" style="width: 10rem; ">
-        <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
-        <div class="card-body">
-          <h5 class="card-title">#<%= booking.pokemon.id %><br><%= booking.pokemon.name%></h5>
-          <h5 class="card-title">Booked on: <%= booking.start_date %></h5>
+    <div class="col-sm-6">
+      <h2>My Bookings
+        <%= link_to "/bookings" do %>
+          <div class="btn btn-flat">Edit <i class="fa-regular fa-pen-to-square"></i></div>
+        <% end %>
+      </h2>
+      <br>
+      <% @my_bookings.each do |booking| %>
+        <div class="list-inline-item">
+          <div class="card m-2" style="width: 10rem; ">
+            <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
+            <div class="card-body">
+              <h5 class="card-title">#<%= booking.pokemon.id %><br><%= booking.pokemon.name%></h5>
+              <h5 class="card-title">Booked on: <%= booking.start_date %></h5>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
-<br>

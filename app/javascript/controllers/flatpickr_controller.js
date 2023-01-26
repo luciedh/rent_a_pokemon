@@ -11,7 +11,9 @@ export default class extends Controller {
 
 
   connect() {
-    this.#initFlatPickr()
+      if (!document.querySelector(".flatpickr-calendar")) {
+      this.#initFlatPickr()
+      }
   }
 
   #initFlatPickr() {
