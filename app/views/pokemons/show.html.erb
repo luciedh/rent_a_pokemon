@@ -6,10 +6,16 @@
         <div class="card-body">
           <h5 class="card-title"><%= @pokemon.name%></h5>
           <h6 class="card-subtitle mb-2 text-muted">#<%= @pokemon.id %></h6>
+          <% type1 = I18n.transliterate(@pokemon.type1).downcase  %>
+          <% if @pokemon.type2.nil? %>
+            <% type2 = "d-inline" %>
+          <% else %>
+            <% type2 = I18n.transliterate(@pokemon.type2).downcase  %>
+          <% end %>
           <ul>
-            <li class="card-text"><%= @pokemon.type1%></li>
+            <li class="<%= type1 %>"><%= @pokemon.type1%></li>
             <% if @pokemon.type2 %>
-              <li class="card-text"><%= @pokemon.type2%></li>
+              <li class="<%= type2 %>"><%= @pokemon.type2%></li>
             <% end  %>
           </ul>
           <p class="card-text">HP: <%= @pokemon.hp%><br>Attack: <%= @pokemon.attack%><br>Defense: <%= @pokemon.defense%><br>Speed: <%= @pokemon.speed%></p>

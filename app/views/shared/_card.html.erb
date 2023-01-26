@@ -6,80 +6,16 @@
                 <h5 class="card-title"><%= pokemon.name%></h5>
                 <h6 class="card-subtitle mb-2 text-muted">#<%= pokemon.id%></h6>
                 <p class="d-inline">
-                  <% if pokemon.type1 == "Poison"  %>
-                    <span class="poison"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Feu" %>
-                    <span class="feu"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Vol" %>
-                    <span class="vol"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Eau" %>
-                    <span class="eau"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Insecte" %>
-                    <span class="insecte"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Normal" %>
-                    <span class="normal"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Électrik" %>
-                    <span class="electrik"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Sol" %>
-                    <span class="sol"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Fée" %>
-                    <span class="fee"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Combat" %>
-                    <span class="combat"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Psy" %>
-                    <span class="psy"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Acier" %>
-                    <span class="acier"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Plante" %>
-                    <span class="plante"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Roche" %>
-                    <span class="roche"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Dragon" %>
-                    <span class="dragon"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Glace" %>
-                    <span class="glace"><%= pokemon.type1.upcase %></span>
-                  <% elsif pokemon.type1 == "Spectre" %>
-                    <span class="spectre"><%= pokemon.type1.upcase %></span>
-                  <% end %>
+                  <% type1 = I18n.transliterate(pokemon.type1).downcase  %>
+                  <span class="<%= type1 %>"><%= pokemon.type1.upcase %></span>
                 </p>
                 <p class="d-inline">
-                  <% if pokemon.type2 == "Poison"  %>
-                    <span class="poison"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Feu" %>
-                    <span class="feu"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Vol" %>
-                    <span class="vol"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Eau" %>
-                    <span class="eau"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Insecte" %>
-                    <span class="insecte"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Normal" %>
-                    <span class="normal"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Électrik" %>
-                    <span class="electrik"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Sol" %>
-                    <span class="sol"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Fée" %>
-                    <span class="fee"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Combat" %>
-                    <span class="combat"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Psy" %>
-                    <span class="psy"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Acier" %>
-                    <span class="acier"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Plante" %>
-                    <span class="plante"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Roche" %>
-                    <span class="roche"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Dragon" %>
-                    <span class="dragon"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Glace" %>
-                    <span class="glace"><%= pokemon.type2.upcase %></span>
-                  <% elsif pokemon.type2 == "Spectre" %>
-                    <span class="spectre"><%= pokemon.type2.upcase %></span>
+                  <% if pokemon.type2.nil? %>
+                    <% type2 = "d-inline" %>
                   <% else %>
-                    <span class="d-inline"><%= "" %></span>
+                    <% type2 = I18n.transliterate(pokemon.type2).downcase  %>
                   <% end %>
+                  <span class="<%= type2 %>"><%= pokemon.type2.nil? ? "" : pokemon.type2.upcase %></span>
                 </p>
               </div>
               <div class="header-right">
