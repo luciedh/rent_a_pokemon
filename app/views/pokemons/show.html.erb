@@ -1,43 +1,79 @@
-<div class="container d-flex">
-  <div class="container mx-auto mt-4">
-    <div class="row">
-      <div class="col-md-4">
+<% type1 = I18n.transliterate(@pokemon.type1).downcase  %>
+<% if @pokemon.type2.nil? %>
+  <% type2 = "d-inline" %>
+<% else %>
+  <% type2 = I18n.transliterate(@pokemon.type2).downcase  %>
+<% end %>
+
+<h1 class="d-flex justify-content-center"><%= @pokemon.name%></h1>
+<div class="container d-flex justify-content-between">
+  <div class="booking-container mx-auto mt-4">
+    <div class="grid-row d-flex justify-content-between">
+     <div class="grid-col span-md-6 span-lg-4">
         <%= image_tag @pokemon.image_url %>
-        <div class="card-body">
-          <h5 class="card-title"><%= @pokemon.name%></h5>
-          <h6 class="card-subtitle mb-2 text-muted">#<%= @pokemon.id %></h6>
-          <% type1 = I18n.transliterate(@pokemon.type1).downcase  %>
-          <% if @pokemon.type2.nil? %>
-            <% type2 = "d-inline" %>
-          <% else %>
-            <% type2 = I18n.transliterate(@pokemon.type2).downcase  %>
+      </div>
+      <div class="grid-col span-md-6 span-lg-4">
+        <h3>Specificités</h3>
+        <table class="pokemon-table">
+          <tbody>
+            <tr>
+              <th>Identifiant</th>
+              <td>#<%= @pokemon.id %></td>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <td>
+                <span class="<%= type1 %>"><%= @pokemon.type1%></span>
+                <% if @pokemon.type2 %>
+                  <span class="<%= type2 %>"><%= @pokemon.type2%></span>
+                <% end  %>
+              </td>
+            </tr>
+            <tr>
+              <th>HP</th>
+              <td>
+                <%= @pokemon.hp%>
+              </td>
+            </tr>
+            <tr>
+              <th>Attack</th>
+              <td>
+                <%= @pokemon.attack%>
+              </td>
+            </tr>
+            <tr>
+              <th>Defense</th>
+              <td>
+                <%= @pokemon.defense%>
+              </td>
+            </tr>
+            <tr>
+              <th>Speed</th>
+              <td>
+                <%= @pokemon.speed%>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-col span-md-12 span-lg-4">
+        <h3>Book <%= @pokemon.name %></h3>
+          <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr", flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object } ) do |f| %>
+            <%= f.input :start_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'startInput' } } %>
+            <%# <%= f.input :end_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'endInput' } }  %>
+            <%= f.submit 'Book now!', class: 'btn btn-primary' %>
           <% end %>
-          <ul>
-            <li class="<%= type1 %>"><%= @pokemon.type1%></li>
-            <% if @pokemon.type2 %>
-              <li class="<%= type2 %>"><%= @pokemon.type2%></li>
-            <% end  %>
-          </ul>
-          <p class="card-text">HP: <%= @pokemon.hp%><br>Attack: <%= @pokemon.attack%><br>Defense: <%= @pokemon.defense%><br>Speed: <%= @pokemon.speed%></p>
-        </div>
-        <div class="buttons d-flex">
-          <% if @pokemon.prev %>
-          <%= link_to "Previous", pokemon_path(@pokemon.prev), class: "btn btn-primary m-3" %>
-          <% end %>
-          <% if @pokemon.next %>
-          <%= link_to "Next", pokemon_path(@pokemon.next), class: "btn btn-primary m-3" %>
-          <% end %>
-          <%= link_to "All", pokemons_path, class: "btn btn-warning m-3" %>
-        </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-4 m-5 p-5">
-    <h4>Hello <span class="user-nickname"><%= current_user.first_name %></span>, would you like to book <%= @pokemon.name %>?</h4>
-      <%= simple_form_for([@pokemon, @booking], data: { controller: "flatpickr", flatpickr_dates_value: @pokemon.flatpickr_booked_dates_object } ) do |f| %>
-        <%= f.input :start_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'startInput' } } %>
-        <%# <%= f.input :end_date, label: false, as: :string, input_html: { class: "d-none", data: { flatpickr_target: 'endInput' } }  %>
-        <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+    <div class="buttons d-flex justify-content-center">
+      <% if @pokemon.prev %>
+        <%= link_to "Previous", pokemon_path(@pokemon.prev), class: "btn btn-primary m-3" %>
       <% end %>
+      <% if @pokemon.next %>
+        <%= link_to "Next", pokemon_path(@pokemon.next), class: "btn btn-primary m-3" %>
+      <% end %>
+        <%# <%= link_to "All", pokemons_path, class: "btn btn-warning m-3" %>
+      </div>
+    </div>
   </div>
 </div>
