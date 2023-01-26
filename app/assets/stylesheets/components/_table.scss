@@ -1,0 +1,15 @@
+.pokemon-table{
+  th {
+    color: #737373;
+    font-size: .875rem;
+    font-weight: normal;
+    text-align: right;
+  }
+  td, th {
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #f0f0f0;
+    background-color: #fff;
+    padding: 10px 30px;
+  }
+}
