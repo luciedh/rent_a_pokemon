@@ -1,3 +1,15 @@
+    <div class="container">
+      <%= simple_form_for(Pokemon.new, html: { class: "d-flex p-2" }) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :type1 %>
+        <%= f.input :type2 %>
+        <%= f.input :hp %>
+        <%= f.input :attack %>
+        <%= f.input :defense %>
+        <%= f.input :speed %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
 <div class="cards">
   <div class="container mt-4 d-flex justify-content-around">
     <div class="row">
