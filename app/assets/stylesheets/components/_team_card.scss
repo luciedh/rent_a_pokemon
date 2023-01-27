@@ -1,13 +1,20 @@
 .team-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-team-card-element {
+.team-card img {
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
-  padding: 4px;
-  margin: 30px;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.team-card img:hover {
+  background-color: rgb(173, 155, 252);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-bottom: 10px;
   width: 100px;
 }
