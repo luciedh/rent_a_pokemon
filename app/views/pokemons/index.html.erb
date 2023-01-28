@@ -1,15 +1,14 @@
-    <div class="container">
-      <%= simple_form_for(Pokemon.new, html: { class: "d-flex p-2" }) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :type1 %>
-        <%= f.input :type2 %>
-        <%= f.input :hp %>
-        <%= f.input :attack %>
-        <%= f.input :defense %>
-        <%= f.input :speed %>
-        <%= f.button :submit %>
-      <% end %>
-    </div>
+<div class="container">
+
+    <%= form_with url: pokemons_path, method: :get, class: "d-flex mt-5" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a pokemon by attack points"
+      %>
+      <%= submit_tag "Find them all", class: "btn btn-info" %>
+    <% end %>
+
 <div class="cards">
   <div class="container mt-4 d-flex justify-content-around">
     <div class="row">
