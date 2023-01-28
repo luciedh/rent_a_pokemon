@@ -17,7 +17,7 @@
         <% @my_team.each do |pokemon| %>
           <div class="list-inline-item">
             <div class="team-card-element">
-              <img src="<%= pokemon.sprite_url %>" alt="Booked Pokemon image">
+              <img src="<%= pokemon.image_url %>" alt="Booked Pokemon image">
             </div>
           </div>
         <% end %>
@@ -35,8 +35,8 @@
         </div>
           <% @my_bookings.each do |booking| %>
             <div class="booking-card">
-              <img src="<%= booking.pokemon.sprite_url %>" alt="Booked Pokemon image">
-              <h5>Booked on: <%= booking.start_date %></h5>
+              <img src="<%= booking.pokemon.image_url %>" alt="Booked Pokemon image">
+              <h5>Réservé pour le <%= booking.start_date %></h5>
             </div>
           <% end %>
       </div>
