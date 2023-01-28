@@ -4,8 +4,8 @@
       <div class="user-card">
         <img src="https://img-31.ccm2.net/9xEwDU0yhhMnvwZs9iWag2FbX7Y=/1240x/smart/3b10757e825b4d4dbf226502493f33b4/ccmcms-hugo/10557733.jpg" alt="">
         <p>Bonjour <%= @user.username %></p>
-        <p>Ton total de points <b>attaque</b> est: </p>
-        <p>Ton total de points défense est:</p>
+        <p>Ton total de points <b>attaque</b> est: <%= @my_team_attack_points %> </p>
+        <p>Ton total de points <b>défense</b> est: <%= @my_team_defense_points %></p>
       </div>
       <br>
         <h2>Ton <strong>équipe</strong>
@@ -15,11 +15,13 @@
         </h2>
         <div class="team-card">
         <% @my_team.each do |pokemon| %>
-          <div class="list-inline-item">
-            <div class="team-card-element">
-              <img src="<%= pokemon.image_url %>" alt="Booked Pokemon image">
+          <%= link_to pokemon_path(pokemon) do %>
+            <div class="list-inline-item">
+              <div class="team-card-element">
+                <img src="<%= pokemon.image_url %>" alt="Booked Pokemon image">
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
         </div>
     </div>
